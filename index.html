@@ -80,7 +80,7 @@
                                 <h3 class="place-heading">New York</h3>
                                 <p class="place-time">Fri 27 now 2016</p>
                                 <p class="place-desc">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                                <a href="#" class="btn"> Buy Tickets</a>
+                                <button href="#" class="btn js-buy-ticket"> Buy Tickets</button>
                             </div>
                         </div>
                         <div class="col col-third">
@@ -89,7 +89,7 @@
                                 <h3 class="place-heading">New York</h3>
                                 <p class="place-time">Fri 27 now 2016</p>
                                 <p class="place-desc">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                                <a href="#" class="btn"> Buy Tickets</a>
+                                <button href="#" class="btn js-buy-ticket"> Buy Tickets</button>
                             </div>
                         </div>
                         <div class="col col-third">
@@ -98,7 +98,7 @@
                                 <h3 class="place-heading">New York</h3>
                                 <p class="place-time">Fri 27 now 2016</p>
                                 <p class="place-desc">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                                <a href="#" class="btn"> Buy Tickets</a>
+                                <button href="#" class="btn js-buy-ticket"> Buy Tickets</button>
                             </div>
                         </div>
                         <div class="clear"></div>
@@ -140,7 +140,7 @@
                     <img src="./assets/img/map.jpg" alt="">
                 </div>
         </div>
-        <div id="footer">
+        <div id="footer"> 
             <div class="social-list">
                 <a href=""><i class="ti-facebook"></i></a>
                 <a href=""><i class="ti-instagram"></i></a>
@@ -152,9 +152,9 @@
             <p class="copyright">Powered by <a href="">w3.css</a></p>
         </div>
     </div>
-    <div class="modal">
-        <div class="modal-container">
-            <div class="modal-close">
+    <div class="modal js-modal">
+        <div class="modal-container js-modal-container">
+            <div class="modal-close js-modal-close">
                 <i class="ti-close"></i>
             </div>
 
@@ -184,5 +184,29 @@
             </footer>
         </div>
     </div>
+    <script>
+        const buyBtns = document.querySelectorAll('.js-buy-ticket');
+        const modal = document.querySelector('.js-modal');
+        const modalContrainer = document.querySelector('.js-modal-container')
+        const modalClose = document.querySelector('.js-modal-close');
+        //Hàm hiển thị modal mua vé(thêm class open vào modal)
+        function showBuyTickets(){
+            modal.classList.add('open')
+        }
+        //Hàm ẩn  modal mua vé(gỡ class open vào modal)
+        function hideBuyTickets(){
+            modal.classList.remove('open')
+        }
+        //nghe hành vi click của button
+        for(const byBtns of buyBtns) {
+            byBtns.addEventListener('click',showBuyTickets);
+        }
+        //nghe hành vi click vào button close
+        modalClose.addEventListener('click',hideBuyTickets);
+        modal.addEventListener('click',hideBuyTickets);
+        modalContrainer.addEventListener('click',function(event){
+            event.stopPropagation();
+        });
+    </script>
 </body>
 </html>
